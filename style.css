@@ -1,3 +1,18 @@
+/* Remove blue outline from embedded videos */
+iframe {
+    outline: none;
+}
+
+/* Remove blue outline on focus for all elements (optional) */
+*:focus {
+    outline: none;
+}
+
+/* Optional: Customize the outline color on focus */
+*:focus {
+    outline: 2px solid #000000; /* Change the color to black or any color you prefer */
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
