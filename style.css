@@ -1,18 +1,4 @@
-/* Remove blue outline from embedded videos */
-iframe {
-    outline: none;
-}
-
-/* Remove blue outline on focus for all elements (optional) */
-*:focus {
-    outline: none;
-}
-
-/* Optional: Customize the outline color on focus */
-*:focus {
-    outline: 2px solid #000000; /* Change the color to black or any color you prefer */
-}
-
+/* General body styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -21,8 +7,9 @@ body {
     color: #ffffff;
 }
 
+/* Container styling */
 .container {
-    width: 80%;
+    width: 750px;
     margin: auto;
     overflow: hidden;
 }
@@ -32,7 +19,7 @@ header {
     color: #ffffff;
     padding-top: 30px;
     min-height: 70px;
-    border-bottom: #77aaff 3px solid;
+    border-bottom: #000000 3px solid;
 }
 
 header a {
@@ -75,13 +62,6 @@ header nav {
 
 .content div {
     margin-bottom: 20px;
-}
-
-.content iframe {
-    display: block;
-    margin: auto;
-    border: 2px solid #77aaff;
-    border-radius: 8px;
 }
 
 footer {
