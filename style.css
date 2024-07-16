@@ -71,14 +71,6 @@ header nav {
     margin-bottom: 20px;
 }
 
-/* Profile picture styling */
-.profile-pic {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
 /* Skills and Equipment container styling */
 .skills-equipment-container {
     display: flex;
