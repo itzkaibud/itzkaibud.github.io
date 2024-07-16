@@ -9,7 +9,8 @@ body {
 
 /* Container styling */
 .container {
-    width: 750px;
+    width: 90%; /* Increase the width to 90% of the viewport */
+    max-width: 1200px; /* Set a maximum width */
     margin: auto;
     overflow: hidden;
 }
@@ -74,6 +75,7 @@ header nav {
 /* Bio, Skills, and Favorites container styling */
 .content-wrapper {
     display: flex;
+    flex-wrap: wrap; /* Ensure it wraps on smaller screens */
     justify-content: space-between;
     gap: 20px;
 }
@@ -83,6 +85,7 @@ header nav {
     background: #2a2a2a;
     padding: 20px;
     border-radius: 8px;
+    min-width: 300px; /* Minimum width to ensure it doesn't get too small */
 }
 
 .skills-favorites-container {
@@ -90,6 +93,7 @@ header nav {
     flex-direction: column;
     gap: 20px;
     flex: 1;
+    min-width: 300px; /* Minimum width to ensure it doesn't get too small */
 }
 
 .skills, .favorites {
