@@ -35,13 +35,13 @@ body {
 }
 
 .image-cropper {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     position: relative;
     border: 2px solid white;
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
-    border-radius: 50px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
     overflow:hidden;
 }
 .my-picture {
