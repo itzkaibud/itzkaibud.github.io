@@ -58,7 +58,7 @@ header #branding {
 
 header #branding h1 {
     margin: 0;
-    font-size: 24px; /* Increase font size */
+    font-size: 28px; /* Increase font size */
 }
 
 header nav {
@@ -105,7 +105,7 @@ header nav {
     background: #2a2a2a;
     padding: 20px;
     border-radius: 8px;
-    font-size: 16px; /* Increase font size */
+    font-size: 22px; /* Increase font size */
 }
 
 footer {
@@ -114,5 +114,5 @@ footer {
     text-align: center;
     padding: 10px 0;
     margin-top: 20px;
-    font-size: 16px; /* Increase font size */
+    font-size: 18px; /* Increase font size */
 }
