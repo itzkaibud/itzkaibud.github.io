@@ -12,16 +12,18 @@ body {
 }
 
 /* Container styling */
-.container,
-.home-container {
+.container {
     width: 90%;
     max-width: 1200px;
     margin: auto;
     overflow: hidden;
 }
 
-/* Home container specific adjustments */
+/* Home container styling */
 .home-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
     padding: 0;
 }
 
@@ -171,6 +173,12 @@ footer {
     body {
         font-size: 16px;
     }
+
+    /* Larger bio picture on phones */
+    .bio img {
+        max-width: 60%; /* Increase to about 50% larger */
+        height: auto;
+    }
 }
 
 /* Extra Small Screens (Small Phones) */
@@ -185,6 +193,12 @@ footer {
 
     body {
         font-size: 14px;
+    }
+
+    /* Larger bio picture on small phones */
+    .bio img {
+        max-width: 60%;
+        height: auto;
     }
 }
 
