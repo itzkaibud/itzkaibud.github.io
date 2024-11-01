@@ -3,7 +3,7 @@
 
 /* General body styles */
 body {
-    font-family: 'Montserrat';
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #121212;
@@ -16,14 +16,6 @@ body {
     width: 90%;
     max-width: 1200px;
     margin: auto;
-    overflow: hidden;
-}
-
-/* Home container styling */
-.home-container {
-    width: 100%;
-    margin: 0;
-    padding: 0;
 }
 
 header {
@@ -31,7 +23,7 @@ header {
     color: #ffffff;
     padding-top: 30px;
     min-height: 70px;
-    border-bottom: #000000 3px solid;
+    border-bottom: 3px solid #000;
 }
 
 header a {
@@ -42,20 +34,10 @@ header a {
 }
 
 header ul {
-    padding: 0;
     list-style: none;
     display: flex;
     justify-content: space-between;
-}
-
-header li {
-    float: left;
-    display: inline;
-    padding: 0 15px;
-}
-
-header #branding {
-    float: left;
+    padding: 0;
 }
 
 header #branding h1 {
@@ -75,39 +57,31 @@ header nav {
     border-radius: 8px;
 }
 
-.content div {
-    margin-bottom: 20px;
+.video-section h2 {
+    text-align: center;
+    margin: 0 0 20px;
 }
 
-/* Bio, Skills, and Favorites container styling */
-.content-wrapper {
+.video-wrapper {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
+    justify-content: center;
 }
 
-.bio {
-    flex: 2;
-    background: #2a2a2a;
-    padding: 20px;
-    border-radius: 8px;
-    min-width: 300px;
+/* YouTube Video Responsiveness */
+iframe {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
 }
 
-.skills-favorites-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    flex: 1;
-    min-width: 300px;
-}
+/* Responsive Breakpoints */
 
-.skills, .favorites {
-    background: #2a2a2a;
-    padding: 20px;
-    border-radius: 8px;
-    font-size: 22px;
+/* Large Screens (Desktops) */
+@media (min-width: 992px) {
+    .video-wrapper iframe {
+        max-width: 50%;
+    }
 }
 
 footer {
@@ -119,80 +93,17 @@ footer {
     font-size: 18px;
 }
 
-/* Responsive Breakpoints */
-
-/* Large Screens (Desktops, Laptops) */
-@media (min-width: 992px) {
-    iframe {
-        max-width: 20%; /* Limits video width on larger screens */
-        height: auto;
-    }
-}
-
-/* Medium Screens (Tablets, iPads) */
-@media (max-width: 992px) {
-    .container {
-        width: 90%;
-    }
-
-    .bio, .skills, .favorites {
-        font-size: 20px;
-    }
-
-    body {
-        font-size: 18px;
-    }
-
-    .content-wrapper {
-        flex-direction: column;
-    }
-}
-
-/* Small Screens (Mobile Phones) */
+/* Adjust font sizes on smaller devices */
 @media (max-width: 768px) {
-    header ul {
-        flex-wrap: wrap; /* Allows items to wrap if necessary */
-        justify-content: center;
-        gap: 5px; /* Reduces space between links */
-    }
-
     header a {
-        font-size: 14px; /* Smaller font size for better fit */
-        padding: 5px 10px; /* Reduces padding for better spacing */
-    }
-
-    header #branding h1 {
-        font-size: 22px; /* Adjusts branding text size */
-    }
-
-    .bio, .skills, .favorites {
-        font-size: 18px;
-    }
-
-    body {
-        font-size: 16px;
-    }
-}
-
-/* Extra Small Screens (Small Phones) */
-@media (max-width: 576px) {
-    .bio, .skills, .favorites {
-        font-size: 16px;
-    }
-
-    header #branding h1 {
-        font-size: 20px;
-    }
-
-    body {
         font-size: 14px;
     }
-}
 
-/* YouTube Video Responsiveness */
-iframe {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
+    header #branding h1 {
+        font-size: 22px;
+    }
+
+    body {
+        font-size: 16px;
+    }
 }
