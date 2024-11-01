@@ -16,7 +16,40 @@ body {
     width: 90%;
     max-width: 1200px;
     margin: auto;
-    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Header styling */
+header {
+    background: #1f1f1f;
+    color: #ffffff;
+    padding: 10px 0;
+    border-bottom: #000000 3px solid;
+}
+
+/* Branding styling */
+#branding h1 {
+    margin: 0;
+    font-size: 28px;
+    text-align: left;
+}
+
+/* Navigation styling */
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 18px;
 }
 
 /* Home container styling */
@@ -24,59 +57,19 @@ body {
     width: 100%;
     margin: 0;
     padding: 0;
-    text-align: center; /* Center content within the container */
+    text-align: center;
 }
 
-header {
-    background: #1f1f1f;
-    color: #ffffff;
-    padding-top: 30px;
-    min-height: 70px;
-    border-bottom: #000000 3px solid;
-}
-
-header a {
-    color: #ffffff;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 18px;
-}
-
-header ul {
-    padding: 0;
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-}
-
-header li {
-    float: left;
-    display: inline;
-    padding: 0 15px;
-}
-
-header #branding {
-    float: left;
-}
-
-header #branding h1 {
-    margin: 0;
-    font-size: 28px;
-}
-
-header nav {
-    float: right;
-    margin-top: 10px;
-}
-
+/* Content styling */
 .content {
     padding: 20px;
     background: #1e1e1e;
     margin-top: 20px;
     border-radius: 8px;
-    text-align: center; /* Center content within content sections */
+    text-align: center;
 }
 
+/* Footer styling */
 footer {
     background: #1f1f1f;
     color: #ffffff;
@@ -86,10 +79,50 @@ footer {
     font-size: 18px;
 }
 
+/* Responsive Breakpoints */
+
 /* YouTube Video Responsiveness */
 iframe {
     width: 100%;
     max-width: 100%;
     height: auto;
     aspect-ratio: 16 / 9;
+}
+
+/* Large Screens (Desktops, Laptops) */
+@media (min-width: 992px) {
+    iframe {
+        max-width: 70%; /* 70% width on larger screens */
+    }
+}
+
+/* Medium Screens (Tablets, iPads) */
+@media (max-width: 992px) {
+    .container {
+        width: 90%;
+        flex-direction: column; /* Stack header elements */
+        align-items: center;
+    }
+
+    #branding h1 {
+        font-size: 24px;
+    }
+
+    header nav ul {
+        gap: 10px;
+    }
+}
+
+/* Small Screens (Mobile Phones) */
+@media (max-width: 768px) {
+    header nav ul {
+        flex-wrap: wrap; /* Allows items to wrap if necessary */
+        justify-content: center;
+        gap: 5px; /* Reduces space between links */
+    }
+
+    header nav ul li a {
+        font-size: 14px;
+        padding: 5px 10px;
+    }
 }
