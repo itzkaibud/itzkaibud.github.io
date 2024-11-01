@@ -12,17 +12,16 @@ body {
 }
 
 /* Container styling */
-.container {
+.container,
+.home-container {
     width: 90%;
     max-width: 1200px;
     margin: auto;
     overflow: hidden;
 }
 
-/* Home container styling */
+/* Home container specific adjustments */
 .home-container {
-    width: 100%;
-    margin: 0;
     padding: 0;
 }
 
