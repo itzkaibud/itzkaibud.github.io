@@ -25,30 +25,29 @@
     <div class="home-container content">
         <section>
             <center><h2>Sound Reel</h2></center>
-            <center>
-                <iframe id="video-frame" src="https://www.youtube.com/embed/6KhFezvs4ig" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </center>
+            <center><iframe width="1120" height="630" src="https://www.youtube.com/embed/6KhFezvs4ig?si=HuzR6gUb6enevJm1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></center>
         </section>
     </div>
+
+    <script>
+    function resizeVideo() {
+        const iframe = document.querySelector('iframe');
+        if (window.innerWidth >= 992) {
+            iframe.style.width = "1200px"; // Set width to 150% of the previous size for large screens
+            iframe.style.height = `${1200 / (16 / 9)}px`; // Adjust height based on 16:9 ratio
+        } else {
+            iframe.style.width = "100%"; // Full width for smaller screens
+            iframe.style.height = `${iframe.offsetWidth / (16 / 9)}px`; // Maintain 16:9 ratio
+        }
+    }
+
+    // Call resizeVideo initially and on window resize
+    window.addEventListener('load', resizeVideo);
+    window.addEventListener('resize', resizeVideo);
+    </script>
+
     <footer>
         <p>&copy; 2024 Kai Turley. All rights reserved.</p>
     </footer>
-
-    <script>
-        function resizeVideo() {
-            const videoFrame = document.getElementById("video-frame");
-            if (window.innerWidth >= 768) { // Apply on larger screens
-                videoFrame.style.width = "70%";  // 70% width on larger screens
-                videoFrame.style.height = "auto"; // Maintain aspect ratio
-            } else {
-                videoFrame.style.width = "100%"; // Full width on smaller screens
-                videoFrame.style.height = "auto"; // Maintain aspect ratio
-            }
-        }
-
-        // Run resizeVideo on page load and window resize
-        window.addEventListener("load", resizeVideo);
-        window.addEventListener("resize", resizeVideo);
-    </script>
 </body>
 </html>
