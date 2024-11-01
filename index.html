@@ -35,11 +35,13 @@
     </footer>
 
     <script>
-        // Resize video to 70% of original size
+        // Resize video to 70% of original size on iPads and larger screens
         window.onload = function() {
-            const videoFrame = document.getElementById("video-frame");
-            videoFrame.width = 800 * 0.7;  // 70% of original width
-            videoFrame.height = 450 * 0.7; // 70% of original height
+            if (window.innerWidth >= 768) { // Check if screen width is 768px or larger
+                const videoFrame = document.getElementById("video-frame");
+                videoFrame.width = 800 * 0.7;  // 70% of original width
+                videoFrame.height = 450 * 0.7; // 70% of original height
+            }
         };
     </script>
 </body>
