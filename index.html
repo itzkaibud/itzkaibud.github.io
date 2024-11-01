@@ -22,31 +22,32 @@
             </nav>
         </div>
     </header>
-    <div class="home-container content">
-        <section>
-            <center><h2>Sound Reel</h2></center>
-            <center>
-                <iframe id="video-frame" width="800" height="450" src="https://www.youtube.com/embed/6KhFezvs4ig" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </center>
+    <main class="content">
+        <section class="video-section">
+            <h2>Sound Reel</h2>
+            <div class="video-wrapper">
+                <iframe id="video-frame" src="https://www.youtube.com/embed/6KhFezvs4ig" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
         </section>
-    </div>
+    </main>
     <footer>
         <p>&copy; 2024 Kai Turley. All rights reserved.</p>
     </footer>
 
     <script>
+        // Resize YouTube video on page load and resize events
         function resizeVideo() {
             const videoFrame = document.getElementById("video-frame");
-            if (window.innerWidth >= 768) { // Check if screen width is 768px or larger
-                videoFrame.width = 800 * 0.7;  // 70% of original width
-                videoFrame.height = 450 * 0.7; // 70% of original height
-            } else {
-                videoFrame.width = 800;  // Reset to original width
-                videoFrame.height = 450; // Reset to original height
+            if (window.innerWidth >= 992) { // Large desktop screens
+                videoFrame.style.width = '50%';
+                videoFrame.style.height = 'auto';
+            } else { // Smaller screens
+                videoFrame.style.width = '100%';
+                videoFrame.style.height = 'auto';
             }
         }
 
-        // Run resizeVideo on page load and window resize
+        // Run resizeVideo on load and resize
         window.addEventListener("load", resizeVideo);
         window.addEventListener("resize", resizeVideo);
     </script>
