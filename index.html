@@ -25,11 +25,22 @@
     <div class="home-container content">
         <section>
             <center><h2>Sound Reel</h2></center>
-            <center><iframe width="800" height="450" src="https://www.youtube.com/embed/6KhFezvs4ig" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>
+            <center>
+                <iframe id="video-frame" width="800" height="450" src="https://www.youtube.com/embed/6KhFezvs4ig" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </center>
         </section>
     </div>
     <footer>
         <p>&copy; 2024 Kai Turley. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Resize video to 70% of original size
+        window.onload = function() {
+            const videoFrame = document.getElementById("video-frame");
+            videoFrame.width = 800 * 0.7;  // 70% of original width
+            videoFrame.height = 450 * 0.7; // 70% of original height
+        };
+    </script>
 </body>
 </html>
