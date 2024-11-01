@@ -29,13 +29,9 @@ body {
 header {
     background: #1f1f1f;
     color: #ffffff;
-    padding: 20px 0;
+    padding-top: 30px;
     min-height: 70px;
     border-bottom: #000000 3px solid;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
 }
 
 header a {
@@ -49,20 +45,27 @@ header ul {
     padding: 0;
     list-style: none;
     display: flex;
-    flex-wrap: wrap; /* Allows the menu items to wrap on smaller screens */
-    gap: 10px;
-    justify-content: space-around;
-    width: 100%; /* Center-aligns items on mobile */
+    justify-content: space-between;
 }
 
 header li {
+    float: left;
     display: inline;
-    padding: 0 10px;
+    padding: 0 15px; /* Reduced padding for closer spacing */
+}
+
+header #branding {
+    float: left;
 }
 
 header #branding h1 {
     margin: 0;
     font-size: 28px;
+}
+
+header nav {
+    float: right;
+    margin-top: 10px;
 }
 
 .content {
@@ -129,7 +132,7 @@ footer {
 /* Medium Screens (Tablets, iPads) */
 @media (max-width: 992px) {
     .container {
-        width: 100%; /* Full width for medium screens */
+        width: 90%; /* Original container width for better fit */
     }
 
     .bio, .skills, .favorites {
@@ -147,40 +150,37 @@ footer {
 
 /* Small Screens (Mobile Phones) */
 @media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        align-items: center;
-    }
-
     header ul {
+        display: flex;
         justify-content: center;
     }
 
+    header li {
+        padding: 0 10px; /* Slightly closer spacing */
+        float: none;
+    }
+
+    header a {
+        font-size: 16px; /* Smaller font size for better fit */
+    }
+
     header #branding h1 {
-        font-size: 24px;
-    }
-
-    .container {
-        width: 100%; /* Ensures full width on mobile */
-    }
-
-    body {
-        font-size: 16px;
+        font-size: 24px; /* Adjusted title size */
     }
 
     .bio, .skills, .favorites {
         font-size: 18px;
     }
+
+    body {
+        font-size: 16px;
+    }
 }
 
 /* Extra Small Screens (Small Phones) */
 @media (max-width: 576px) {
-    header {
-        text-align: center;
-    }
-
-    header ul {
-        justify-content: center;
+    .bio, .skills, .favorites {
+        font-size: 16px;
     }
 
     header #branding h1 {
@@ -189,14 +189,6 @@ footer {
 
     body {
         font-size: 14px;
-    }
-
-    .container {
-        width: 100%; /* Full width on very small screens */
-    }
-
-    .bio, .skills, .favorites {
-        font-size: 16px;
     }
 }
 
