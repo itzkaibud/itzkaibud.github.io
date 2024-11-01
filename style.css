@@ -3,7 +3,7 @@
 
 /* General body styles */
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat';
     margin: 0;
     padding: 0;
     background-color: #121212;
@@ -16,6 +16,15 @@ body {
     width: 90%;
     max-width: 1200px;
     margin: auto;
+    overflow: hidden;
+}
+
+/* Home container styling */
+.home-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center; /* Center content within the container */
 }
 
 header {
@@ -23,7 +32,7 @@ header {
     color: #ffffff;
     padding-top: 30px;
     min-height: 70px;
-    border-bottom: 3px solid #000;
+    border-bottom: #000000 3px solid;
 }
 
 header a {
@@ -34,10 +43,20 @@ header a {
 }
 
 header ul {
+    padding: 0;
     list-style: none;
     display: flex;
     justify-content: space-between;
-    padding: 0;
+}
+
+header li {
+    float: left;
+    display: inline;
+    padding: 0 15px;
+}
+
+header #branding {
+    float: left;
 }
 
 header #branding h1 {
@@ -55,33 +74,7 @@ header nav {
     background: #1e1e1e;
     margin-top: 20px;
     border-radius: 8px;
-}
-
-.video-section h2 {
-    text-align: center;
-    margin: 0 0 20px;
-}
-
-.video-wrapper {
-    display: flex;
-    justify-content: center;
-}
-
-/* YouTube Video Responsiveness */
-iframe {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-}
-
-/* Responsive Breakpoints */
-
-/* Large Screens (Desktops) */
-@media (min-width: 992px) {
-    .video-wrapper iframe {
-        max-width: 50%;
-    }
+    text-align: center; /* Center content within content sections */
 }
 
 footer {
@@ -93,17 +86,10 @@ footer {
     font-size: 18px;
 }
 
-/* Adjust font sizes on smaller devices */
-@media (max-width: 768px) {
-    header a {
-        font-size: 14px;
-    }
-
-    header #branding h1 {
-        font-size: 22px;
-    }
-
-    body {
-        font-size: 16px;
-    }
+/* YouTube Video Responsiveness */
+iframe {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
 }
