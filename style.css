@@ -51,7 +51,7 @@ header ul {
 header li {
     float: left;
     display: inline;
-    padding: 0 15px; /* Reduced padding for closer spacing */
+    padding: 0 15px;
 }
 
 header #branding {
@@ -124,7 +124,7 @@ footer {
 /* Large Screens (Desktops, Laptops) */
 @media (min-width: 992px) {
     iframe {
-        max-width: 100%;
+        max-width: 20%; /* Limits video width on larger screens */
         height: auto;
     }
 }
@@ -132,7 +132,7 @@ footer {
 /* Medium Screens (Tablets, iPads) */
 @media (max-width: 992px) {
     .container {
-        width: 90%; /* Original container width for better fit */
+        width: 90%;
     }
 
     .bio, .skills, .favorites {
@@ -151,21 +151,18 @@ footer {
 /* Small Screens (Mobile Phones) */
 @media (max-width: 768px) {
     header ul {
-        display: flex;
+        flex-wrap: wrap; /* Allows items to wrap if necessary */
         justify-content: center;
-    }
-
-    header li {
-        padding: 0 10px; /* Slightly closer spacing */
-        float: none;
+        gap: 5px; /* Reduces space between links */
     }
 
     header a {
-        font-size: 16px; /* Smaller font size for better fit */
+        font-size: 14px; /* Smaller font size for better fit */
+        padding: 5px 10px; /* Reduces padding for better spacing */
     }
 
     header #branding h1 {
-        font-size: 24px; /* Adjusted title size */
+        font-size: 22px; /* Adjusts branding text size */
     }
 
     .bio, .skills, .favorites {
