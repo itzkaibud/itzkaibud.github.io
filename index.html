@@ -22,32 +22,31 @@
             </nav>
         </div>
     </header>
-    <main class="content">
-        <section class="video-section">
-            <h2>Sound Reel</h2>
-            <div class="video-wrapper">
+    <div class="home-container content">
+        <section>
+            <center><h2>Sound Reel</h2></center>
+            <center>
                 <iframe id="video-frame" src="https://www.youtube.com/embed/6KhFezvs4ig" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
+            </center>
         </section>
-    </main>
+    </div>
     <footer>
         <p>&copy; 2024 Kai Turley. All rights reserved.</p>
     </footer>
 
     <script>
-        // Resize YouTube video on page load and resize events
         function resizeVideo() {
             const videoFrame = document.getElementById("video-frame");
-            if (window.innerWidth >= 992) { // Large desktop screens
-                videoFrame.style.width = '50%';
-                videoFrame.style.height = 'auto';
-            } else { // Smaller screens
-                videoFrame.style.width = '100%';
-                videoFrame.style.height = 'auto';
+            if (window.innerWidth >= 768) { // Apply on larger screens
+                videoFrame.style.width = "70%";  // 70% width on larger screens
+                videoFrame.style.height = "auto"; // Maintain aspect ratio
+            } else {
+                videoFrame.style.width = "100%"; // Full width on smaller screens
+                videoFrame.style.height = "auto"; // Maintain aspect ratio
             }
         }
 
-        // Run resizeVideo on load and resize
+        // Run resizeVideo on page load and window resize
         window.addEventListener("load", resizeVideo);
         window.addEventListener("resize", resizeVideo);
     </script>
