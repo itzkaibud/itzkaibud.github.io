@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music - Kai Turley</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1>Kai Turley</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/projects">Projects</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container content">
+        <center><h1>My Music</h1></center>
+        
+        <div>
+            <center><h2>Bloom (Original Composition)</h2></center>
+            <center><iframe class="project-video" width="784" height="441" src="https://www.youtube.com/embed/OhPsNxQ0zuM?si=HL2bYZ1OHv6-VJ7" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
+        </div>
+
+        <div>
+            <center><h2>D'un Vieux Jardin - Orchestral Arrangement</h2></center>
+            <center><iframe class="project-video" width="784" height="441" src="https://www.youtube.com/embed/a0wr9ZDEz8E?si=Hcfv_zYiqd8qV6w" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Kai Turley. All rights reserved.</p>
+    </footer>
+</body>
+</html>
