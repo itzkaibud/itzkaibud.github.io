@@ -197,7 +197,7 @@ footer {
 
     /* Larger bio picture on small phones */
     .bio img {
-        max-width: 60%;
+        max-width: 100%;
         height: auto;
     }
 }
