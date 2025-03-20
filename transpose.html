@@ -45,19 +45,28 @@
       padding: 30px;
     }
 
+    .word-container {
+      display: inline-block;
+      margin-right: 15px;
+      text-align: center;
+      position: relative;
+    }
+
     .word {
       font-size: 22px;
       cursor: pointer;
       padding: 5px;
-      display: inline-block;
-      margin-right: 10px;
+    }
+
+    .word.selected {
+      background-color: yellow; /* Highlight the selected word */
     }
 
     .chord {
       font-size: 22px;
       font-weight: bold;
-      margin-right: 5px;
       color: blue;
+      margin-bottom: 5px;
     }
 
     #transposer {
@@ -125,6 +134,7 @@
     let currentSelectedWord = null;
     let lyricsData = [];
 
+    // Function to parse lyrics
     function parseLyrics() {
       const lyricText = document.getElementById('lyric-input').value.trim();
       if (!lyricText) return;
@@ -139,25 +149,49 @@
       renderLyrics();
     }
 
+    // Function to render the lyrics with any assigned chords
     function renderLyrics() {
       const lyricsContainer = document.getElementById('lyrics-container');
       lyricsContainer.innerHTML = '';  // Clear previous lyrics
 
       lyricsData.forEach((wordData, index) => {
+        const wordContainer = document.createElement('div');
+        wordContainer.classList.add('word-container');
+
+        // If a chord is assigned, show the chord above the word
+        if (wordData.chord) {
+          const chordSpan = document.createElement('span');
+          chordSpan.classList.add('chord');
+          chordSpan.textContent = wordData.chord;
+          wordContainer.appendChild(chordSpan);
+        }
+
         const wordSpan = document.createElement('span');
         wordSpan.classList.add('word');
         wordSpan.textContent = wordData.text;
 
         wordSpan.addEventListener('click', () => selectWord(index));
 
-        lyricsContainer.appendChild(wordSpan);
+        wordContainer.appendChild(wordSpan);
+        lyricsContainer.appendChild(wordContainer);
       });
 
       document.getElementById('chord-controls').style.display = 'block';
     }
 
+    // Function to select a word and highlight it
     function selectWord(index) {
+      if (currentSelectedWord !== null) {
+        // Remove previous selection
+        const previousWordSpan = document.querySelector(`.word:nth-child(${currentSelectedWord + 1})`);
+        if (previousWordSpan) {
+          previousWordSpan.classList.remove('selected');
+        }
+      }
+
       currentSelectedWord = index;
+      const wordSpan = document.querySelector(`.word:nth-child(${index + 1})`);
+      wordSpan.classList.add('selected');  // Highlight the selected word
 
       const wordData = lyricsData[index];
       if (wordData.chord) {
@@ -167,6 +201,7 @@
       }
     }
 
+    // Function to assign a chord to the selected word
     function assignChord() {
       if (currentSelectedWord === null) return;
 
@@ -178,6 +213,7 @@
       renderLyrics();
     }
 
+    // Event listeners for parsing lyrics and assigning chords
     document.getElementById('parse-lyrics').addEventListener('click', parseLyrics);
     document.getElementById('assign-chord').addEventListener('click', assignChord);
   </script>
