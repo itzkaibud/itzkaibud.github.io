@@ -5,24 +5,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lyric Chord Assigner</title>
   <style>
+    body {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 30px;
+    }
+
+    textarea {
+      font-size: 18px;
+      padding: 15px;
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+    }
+
+    button {
+      font-size: 18px;
+      padding: 15px 25px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    select {
+      font-size: 18px;
+      padding: 10px;
+      margin-right: 10px;
+    }
+
+    #chord-controls {
+      margin-top: 30px;
+    }
+
+    .lyrics-container {
+      margin-top: 40px;
+      padding: 30px;
+    }
+
+    .word {
+      font-size: 22px;
+      cursor: pointer;
+      padding: 5px;
+      display: inline-block;
+      margin-right: 10px;
+    }
+
     .chord {
+      font-size: 22px;
       font-weight: bold;
       margin-right: 5px;
       color: blue;
     }
-    .word {
-      cursor: pointer;
-      padding: 2px;
-      display: inline-block;
-      margin-right: 5px;
-    }
-    .lyrics-container {
+
+    #transposer {
+      font-size: 18px;
       margin-top: 20px;
-      padding: 20px;
     }
-    .chord-dropdown {
-      display: inline-block;
-      margin-left: 10px;
+
+    label {
+      font-size: 18px;
+      margin-right: 10px;
     }
   </style>
 </head>
@@ -31,7 +76,7 @@
 
   <div>
     <label for="lyric-input">Enter lyrics:</label>
-    <textarea id="lyric-input" rows="5" cols="50" placeholder="Enter lyrics here..."></textarea>
+    <textarea id="lyric-input" rows="10" cols="50" placeholder="Enter lyrics here..."></textarea>
     <button id="parse-lyrics">Parse Lyrics</button>
   </div>
 
@@ -58,4 +103,83 @@
     
     <label for="chord-type">Select Chord Type:</label>
     <select id="chord-type">
-      <option value="major">Major</op
+      <option value="major">Major</option>
+      <option value="minor">Minor</option>
+      <option value="7">Dominant 7</option>
+      <option value="maj7">Major 7</option>
+      <option value="m7">Minor 7</option>
+    </select>
+    <button id="assign-chord">Assign Chord</button>
+  </div>
+
+  <script>
+    const notes = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
+    const chordTypes = {
+      "major": "",
+      "minor": "m",
+      "7": "7",
+      "maj7": "maj7",
+      "m7": "m7"
+    };
+
+    let currentSelectedWord = null;
+    let lyricsData = [];
+
+    function parseLyrics() {
+      const lyricText = document.getElementById('lyric-input').value.trim();
+      if (!lyricText) return;
+
+      const words = lyricText.split(/\s+/);
+
+      lyricsData = words.map(word => ({
+        text: word,
+        chord: ""
+      }));
+
+      renderLyrics();
+    }
+
+    function renderLyrics() {
+      const lyricsContainer = document.getElementById('lyrics-container');
+      lyricsContainer.innerHTML = '';  // Clear previous lyrics
+
+      lyricsData.forEach((wordData, index) => {
+        const wordSpan = document.createElement('span');
+        wordSpan.classList.add('word');
+        wordSpan.textContent = wordData.text;
+
+        wordSpan.addEventListener('click', () => selectWord(index));
+
+        lyricsContainer.appendChild(wordSpan);
+      });
+
+      document.getElementById('chord-controls').style.display = 'block';
+    }
+
+    function selectWord(index) {
+      currentSelectedWord = index;
+
+      const wordData = lyricsData[index];
+      if (wordData.chord) {
+        const [root, type] = wordData.chord.split(/(?=[a-zA-Z])/);
+        document.getElementById('root-note').value = root;
+        document.getElementById('chord-type').value = type;
+      }
+    }
+
+    function assignChord() {
+      if (currentSelectedWord === null) return;
+
+      const rootNote = document.getElementById('root-note').value;
+      const chordType = document.getElementById('chord-type').value;
+      const chord = rootNote + chordTypes[chordType];
+
+      lyricsData[currentSelectedWord].chord = chord;
+      renderLyrics();
+    }
+
+    document.getElementById('parse-lyrics').addEventListener('click', parseLyrics);
+    document.getElementById('assign-chord').addEventListener('click', assignChord);
+  </script>
+</body>
+</html>
