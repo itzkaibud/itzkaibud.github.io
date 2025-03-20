@@ -40,6 +40,16 @@
       margin-top: 30px;
     }
 
+    #transposer {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+    label {
+      font-size: 18px;
+      margin-right: 10px;
+    }
+
     .lyrics-container {
       margin-top: 40px;
       padding: 30px;
@@ -69,14 +79,9 @@
       margin-bottom: 5px;
     }
 
-    #transposer {
-      font-size: 18px;
-      margin-top: 20px;
-    }
-
-    label {
-      font-size: 18px;
-      margin-right: 10px;
+    .chord-container {
+      display: inline-block;
+      text-align: center;
     }
   </style>
 </head>
@@ -118,7 +123,14 @@
       <option value="maj7">Major 7</option>
       <option value="m7">Minor 7</option>
     </select>
+
     <button id="assign-chord">Assign Chord</button>
+    
+    <div id="transposer">
+      <label for="transpose-slider">Transpose Chords:</label>
+      <input type="range" id="transpose-slider" min="-7" max="7" value="0">
+      <span id="transpose-value">0</span> Half Steps
+    </div>
   </div>
 
   <script>
@@ -133,6 +145,7 @@
 
     let currentSelectedWord = null;
     let lyricsData = [];
+    let transposeValue = 0;  // Default transposition value
 
     // Function to parse lyrics
     function parseLyrics() {
@@ -159,12 +172,17 @@
         wordContainer.classList.add('word-container');
 
         // If a chord is assigned, show the chord above the word
+        const chordContainer = document.createElement('div');
+        chordContainer.classList.add('chord-container');
+
         if (wordData.chord) {
           const chordSpan = document.createElement('span');
           chordSpan.classList.add('chord');
-          chordSpan.textContent = wordData.chord;
-          wordContainer.appendChild(chordSpan);
+          chordSpan.textContent = applyTransposition(wordData.chord);
+          chordContainer.appendChild(chordSpan);
         }
+
+        wordContainer.appendChild(chordContainer);
 
         const wordSpan = document.createElement('span');
         wordSpan.classList.add('word');
@@ -201,6 +219,18 @@
       }
     }
 
+    // Function to apply transposition to a chord
+    function applyTransposition(chord) {
+      const rootNote = chord.slice(0, 1);
+      const chordType = chord.slice(1);
+      let rootIndex = notes.indexOf(rootNote);
+
+      rootIndex = (rootIndex + transposeValue) % notes.length;
+      if (rootIndex < 0) rootIndex += notes.length;
+
+      return notes[rootIndex] + chordType;
+    }
+
     // Function to assign a chord to the selected word
     function assignChord() {
       if (currentSelectedWord === null) return;
@@ -216,6 +246,13 @@
     // Event listeners for parsing lyrics and assigning chords
     document.getElementById('parse-lyrics').addEventListener('click', parseLyrics);
     document.getElementById('assign-chord').addEventListener('click', assignChord);
+
+    // Event listener for transposition slider
+    document.getElementById('transpose-slider').addEventListener('input', function() {
+      transposeValue = parseInt(this.value);
+      document.getElementById('transpose-value').textContent = transposeValue;
+      renderLyrics();  // Re-render lyrics with transposed chords
+    });
   </script>
 </body>
 </html>
